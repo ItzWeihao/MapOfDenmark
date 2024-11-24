@@ -1,0 +1,172 @@
+#menuActivation {
+    -fx-background-color: rgb(255, 0, 212);
+}
+
+#vBox, #vbox_debug {
+    -fx-padding: 5 10 10 10;
+}
+
+.scroll-pane {
+   -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.vbox_debug_section {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.debugText {
+    -fx-line-spacing: 2em;
+    -fx-padding: 5;
+}
+
+.toolbar .button, .toolbar .toggle-button, .toolbar .color-picker {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.toolbar .spinner {
+    -fx-base: black;
+    -fx-control-inner-background: rgb(100,100,100);
+}
+
+.toolbar .check-box .box {
+    -fx-border-color: black;
+    -fx-background-color: rgb(100,100,100);
+}
+
+.toolbar .combo-box {
+    -fx-background-color: black;
+}
+
+.toolbar .combo-box *, .toolbar .color-picker * {
+    -fx-text-fill: white;
+}
+
+.toolbar .combo-box .combo-box-popup .list-view {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.toolbar .combo-box .combo-box-popup .list-view .list-cell {
+    -fx-background-color: rgb(100,100,100);
+}
+
+center {
+    -fx-border-color: blue;
+    -fx-border-width: 1;
+}
+
+.list-cell {
+    -fx-padding: 0px;
+}
+
+#fontBox > .list-view {
+    -fx-max-width: 150;
+}
+
+#fontBox > .item-view .item-cell {
+    -fx-max-width:150;
+    -fx-padding:3 0 3 7;
+}
+
+.separator_vertical *.line {
+    -fx-border-style: hidden solid hidden hidden;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+}
+
+.separator_horizontal *.line {
+    -fx-border-style: solid hidden hidden hidden;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+}
+
+.titlepane_section {
+    -fx-animated: false;
+    -fx-text-fill: white;
+}
+
+.titlepane_section > .content {
+    -fx-background-color: white;
+}
+
+.titlepane_section > .title {
+    -fx-background-color: black;
+}
+
+.titlepane_section > .title > .text, .titlepane_section > .title > .ikonli-font-icon {
+    -fx-translate-x: -17;
+}
+
+.titlepane_section > .title > .arrow-button {
+    -fx-translate-x: 202;
+}
+
+#route_buttons .toggle-button {
+    -fx-background-color:black;
+}
+
+#route_find_button, #route_order_button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.slider_button {
+    -fx-background-color: black;
+    -fx-background-radius: 50;
+    -fx-text-fill: white;
+}
+
+#slider_bar {
+    -fx-text-fill: black;
+}
+
+#slider_bar .thumb {
+    -fx-background-color:black;
+}
+
+.button:hover, .toggle-button:hover, .spinner:hover, .slider_button:hover, .check-box:hover {
+    -fx-opacity: 0.75;
+    -fx-cursor: hand;
+}
+
+#addressBottom {
+    -fx-border-style: solid hidden hidden hidden;
+    -fx-border-width: 2;
+    -fx-border-color: lightgray;
+}
+
+#routeTextPane {
+    -fx-font-size:11;
+}
+
+#routeTextPane {
+    -fx-border-style: solid solid solid solid;
+    -fx-border-width: 2;
+    -fx-border-color: lightgray;
+}
+
+.RouteHBox {
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 1;
+    -fx-border-color: lightgray;
+}
+
+.RouteHBox:hover {
+    -fx-background-color: yellow;
+    -fx-cursor: hand;
+}
+
+#routeTypeBox .toggle-button {
+    -fx-background-color: black;
+    -fx-max-width:66.66;
+}
+
+#routeTypeBox .toggle-button:selected {
+    -fx-background-color:gray;
+}

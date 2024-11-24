@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" styleClass="RouteHBox"
+      spacing="5" alignment="CENTER_LEFT" prefWidth="235" maxWidth="235" prefHeight="50" maxHeight="50">
+    <padding>
+        <Insets top="5" right="5" bottom="5" left="5" />
+    </padding>
+    <Label fx:id="RouteNumber" styleClass="RouteNumber" maxWidth="50" maxHeight="50"/>
+    <Text fx:id="RouteSymbol" styleClass="RouteSymbol"/>
+    <Label fx:id="RouteDescription" styleClass="RouteDescription" wrapText="true" maxWidth="135" maxHeight="50"/>
+</HBox>

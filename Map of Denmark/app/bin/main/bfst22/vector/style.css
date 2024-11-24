@@ -1,0 +1,39 @@
+#menuActivation {
+    -fx-background-color: rgb(255, 0, 212);
+}
+
+#vBox {
+    -fx-border-style: hidden solid hidden hidden;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+}
+
+#vbox_debug {
+    -fx-padding: 5 10 10 10;
+    -fx-border-style: hidden hidden hidden solid;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+}
+
+#vbox_debug .vbox_debug_section {
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.debugSectionHeader {
+    -fx-pref-width: 228;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-padding: 5;
+    -fx-font-weight: bold;
+}
+
+.debugText {
+    -fx-line-spacing: 2em;
+    -fx-padding: 5;
+}
+
+center {
+    -fx-border-color: blue;
+    -fx-border-width: 1;
+}

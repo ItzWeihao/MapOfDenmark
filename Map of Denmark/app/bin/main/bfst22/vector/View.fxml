@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import bfst22.vector.MapCanvas?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Label?>
+<Scene xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="bfst22.vector.Controller" fx:id="scene">
+    <BorderPane fx:id="someBorderPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+        <top>
+            <VBox>
+                <MenuBar BorderPane.alignment="TOP_LEFT" prefHeight="20">
+                    <Menu text="File">
+                        <MenuItem text="Load Default map" onAction="#onDefaultLoadClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem text="Import Custom map" onAction="#onBrowseOSMClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <Menu text="Recent Loaded Maps" fx:id="recentMapsSubmenu" disable="true" />
+                        <MenuItem text="Unload map" fx:id="unloadFileButton" onAction="#unloadFileButtonClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem text="Exit" onAction="#exitButtonClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DELETE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </Menu>
+                    <Menu text="Edit">
+                        <MenuItem text="Zoom In" onAction="#zoomInClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="COMMA" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem text="Zoom Out" onAction="#zoomOutClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="PERIOD" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem text="Change Zoom Level" onAction="#changeZoomLevelClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </Menu>
+                    <Menu text="Tools">
+                        <fx:define>
+                            <ToggleGroup fx:id="mapdisplay" />
+                        </fx:define>
+                        <MenuItem text="Change Absolute Coordinates" onAction="#changeAbsoluteCoordClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT1" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem text="Change Relative Coordinates" onAction="#changeRelativeCoordClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT2" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <MenuItem text="Center Screen Position" onAction="#centerScreenPosition">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT3" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                        <CheckMenuItem text="Toggle Debug Sidebar" onAction="#debugSidebarClicked" selected="true">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT4" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <SeparatorMenuItem />
+                        <RadioMenuItem text="Display Filled" onAction="#debugDisplayFilledClicked" selected="true" toggleGroup="$mapdisplay">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </RadioMenuItem>
+                        <RadioMenuItem text="Display Wireframe" onAction="#debugDisplayWireframeClicked" toggleGroup="$mapdisplay">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                            </accelerator>
+                        </RadioMenuItem>
+                        <SeparatorMenuItem />
+                        <CheckMenuItem text="Enable Cursor Pointer" onAction="#debugCursorClicked" selected="true">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Enable Kd-Tree VisBox" onAction="#debugVisBoxClicked" selected="true">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Enable Kd-Tree Splits" onAction="#debugSplitsClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Enable Free Movement" onAction="#debugFreeMovementClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Disable Help Text" onAction="#debugHelpTextClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT5" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Disable Debug Box" onAction="#debugInfoTextClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem text="Disable Bounding Box" onAction="#debugBoundingBoxClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="DOWN" code="DIGIT7" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </CheckMenuItem>
+                    </Menu>
+                    <Menu text="Help">
+                        <MenuItem text="About..." onAction="#aboutButtonClicked">
+                            <accelerator>
+                                <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                    </Menu>
+                </MenuBar>
+                <HBox>
+                    <ToolBar prefHeight="30.0" HBox.hgrow="ALWAYS">
+                        <HBox HBox.hgrow="ALWAYS" spacing="5">
+                            <Button fx:id="menuActivation" onAction="#onMenuButtonPress" text="Menu"/>
+                            <Button text="Button0"/>
+                        </HBox>
+                        <HBox HBox.hgrow="ALWAYS" spacing="5" alignment="CENTER_RIGHT">
+                            <TextField prefWidth="250" promptText="Search..."/>
+                            <Button text="Search" prefWidth="75"/>
+                        </HBox>
+                    </ToolBar>
+                </HBox>
+            </VBox>
+        </top>
+        <left>
+            <VBox fx:id="vBox" id="vBox" prefWidth="200.0" BorderPane.alignment="TOP_LEFT" />
+        </left>
+        <right>
+            <VBox fx:id="vbox_debug" id="vbox_debug" prefWidth="250.0" BorderPane.alignment="TOP_RIGHT" spacing="10">
+                <VBox styleClass="vbox_debug_section">
+                    <Label text="Updating" styleClass="debugSectionHeader" />
+                    <Label fx:id="canvas_load_time" styleClass="debugText" />
+                    <Label fx:id="canvas_repaint_time" styleClass="debugText" />
+                    <Label fx:id="canvas_avg_repaint_time" styleClass="debugText" />
+                </VBox>
+                <VBox styleClass="vbox_debug_section">
+                    <Label text="Coordinates" styleClass="debugSectionHeader" />
+                    <Label fx:id="canvas_min" styleClass="debugText" />
+                    <Label fx:id="canvas_max" styleClass="debugText" />
+                    <Label fx:id="canvas_origin" styleClass="debugText" />
+                    <Label fx:id="canvas_mouse" styleClass="debugText" />
+                    <Label fx:id="canvas_zoom" styleClass="debugText" />
+                </VBox>
+                <VBox styleClass="vbox_debug_section">
+                    <Label text="File Data" styleClass="debugSectionHeader" />
+                    <Label fx:id="canvas_filesize" styleClass="debugText" />
+                    <Label fx:id="canvas_bounds_min" styleClass="debugText" />
+                    <Label fx:id="canvas_bounds_max" styleClass="debugText" />
+                    <Label fx:id="canvas_nodes" styleClass="debugText" />
+                    <Label fx:id="canvas_ways" styleClass="debugText" />
+                    <Label fx:id="canvas_relations" styleClass="debugText" />
+                </VBox>
+            </VBox>
+        </right>
+        <center>
+            <MapCanvas fx:id="canvas"
+                       id="canvas"
+                       width="536"
+                       height="470"
+                       onScroll="#onScroll"
+                       BorderPane.alignment="TOP_LEFT"
+                       onMousePressed="#onMousePressed"
+                       onMouseDragged="#onMouseDragged"
+                       onMouseMoved="#onMouseMoved" />
+        </center>
+        <bottom>
+            <ToolBar prefHeight="30.0" prefWidth="${scene.width}">
+                <Button mnemonicParsing="false" text="Button1"/>
+                <Button mnemonicParsing="false" text="Button2"/>
+                <Button mnemonicParsing="false" text="Button3"/>
+            </ToolBar>
+        </bottom>
+    </BorderPane>
+</Scene>
